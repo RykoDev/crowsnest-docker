@@ -16,7 +16,7 @@
 set -Ee
 
 # Debug
-# set -x
+set -x
 
 
 ## Global Vars

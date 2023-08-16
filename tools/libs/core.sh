@@ -15,7 +15,7 @@
 set -Ee
 
 # Debug
-# set -x
+set -x
 
 ## Funcs
 get_os_version() {
