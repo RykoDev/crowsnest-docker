@@ -55,29 +55,14 @@ main() {
 
     welcome_msg
 
-    msg "Running apt-get update first ...\n"
-    if run_apt_update; then
-        status_msg "Running apt-get update first ..." "0"
-    else
-        status_msg "Running apt-get update first ..." "1"
-    fi
-
-    source_pkglist_file
-    msg "Installing dependencies ...\n"
-    if install_dependencies ;then
-        status_msg "Install dependencies ..." "0"
-    else
-        status_msg "Install dependencies ..." "1"
-    fi
-
     import_config
 
-    msg "Creating file structure ..."
-    if create_filestructure ;then
-        status_msg "Creating file structure ..." "0"
-    else
-        status_msg "Creating file structure ..." "1"
-    fi
+    # msg "Creating file structure ..."
+    # if create_filestructure ;then
+    #     status_msg "Creating file structure ..." "0"
+    # else
+    #     status_msg "Creating file structure ..." "1"
+    # fi
 
 
     if link_main_executable; then
@@ -86,11 +71,11 @@ main() {
         status_msg "Link crowsnest to /usr/local/bin ..." "1"
     fi
 
-    if install_service_file; then
-        status_msg "Install service file ..." "0"
-    else
-        status_msg "Install service file ..." "1"
-    fi
+    # if install_service_file; then
+    #     status_msg "Install service file ..." "0"
+    # else
+    #     status_msg "Install service file ..." "1"
+    # fi
 
     if install_env_file; then
         status_msg "Install environment file ..." "0"
@@ -110,11 +95,11 @@ main() {
         status_msg "Install crowsnest.conf ..." "1"
     fi
 
-    if enable_service; then
-        status_msg "Enable crowsnest.service ..." "0"
-    else
-        status_msg "Enable crowsnest.service ..." "1"
-    fi
+    # if enable_service; then
+    #     status_msg "Enable crowsnest.service ..." "0"
+    # else
+    #     status_msg "Enable crowsnest.service ..." "1"
+    # fi
 
     add_group_video
 
