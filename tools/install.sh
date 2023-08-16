@@ -65,11 +65,11 @@ main() {
     # fi
 
 
-    if link_main_executable; then
-        status_msg "Link crowsnest to /usr/local/bin ..." "0"
-    else
-        status_msg "Link crowsnest to /usr/local/bin ..." "1"
-    fi
+    # if link_main_executable; then
+    #     status_msg "Link crowsnest to /usr/local/bin ..." "0"
+    # else
+    #     status_msg "Link crowsnest to /usr/local/bin ..." "1"
+    # fi
 
     # if install_service_file; then
     #     status_msg "Install service file ..." "0"
@@ -77,11 +77,11 @@ main() {
     #     status_msg "Install service file ..." "1"
     # fi
 
-    if install_env_file; then
-        status_msg "Install environment file ..." "0"
-    else
-        status_msg "Install environment file ..." "1"
-    fi
+    # if install_env_file; then
+    #     status_msg "Install environment file ..." "0"
+    # else
+    #     status_msg "Install environment file ..." "1"
+    # fi
 
     if install_logrotate_conf; then
         status_msg "Install logrotate configuration ..." "0"
