@@ -123,27 +123,6 @@ main() {
     if [[ "${CROWSNEST_UNATTENDED}" = "0" ]]; then
         set_gpu_mem
     fi
-
-    if [[ "${CROWSNEST_UNATTENDED}" = "0" ]]; then
-        ask_update_entry
-    fi
-
-    if [[ "${CROWSNEST_UNATTENDED}" = "1" ]] &&
-    [[ "${CROWSNEST_ADD_CROWSNEST_MOONRAKER}" = "1" ]]; then
-        add_update_entry
-    fi
-
-    if [[ "${CROWSNEST_UNATTENDED}" = "0" ]]; then
-        goodbye_msg
-        ask_reboot
-    fi
-
-    if [[ "${CROWSNEST_UNATTENDED}" = "1" ]]; then
-        unattended_success_msg
-    fi
-
-
-    unset DEBIAN_FRONTEND
 }
 
 main "${@}"

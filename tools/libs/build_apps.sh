@@ -49,5 +49,5 @@ build_apps() {
     if [[ "$(is_raspbian)" = "0" ]]; then
         msg "Install of camera-streamer skipped, only supported on Raspberry SBC's! ... "
     fi
-    sudo -u "${BASE_USER}" "${PWD}"/bin/build.sh --build
+    "${PWD}"/bin/build.sh --build
 }
