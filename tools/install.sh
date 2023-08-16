@@ -37,16 +37,6 @@ main() {
         export DEBIAN_FRONTEND=noninteractive
     fi
 
-    if [[ "${SUDO_USER}" = "root" ]]; then
-        not_as_root_msg
-        exit 1
-    fi
-
-    if [[ -z "${SUDO_USER}" ]] && [[ "${CROWSNEST_UNATTENDED}" != "1" ]]; then
-        need_sudo_msg
-        exit 1
-    fi
-
     [[ -n "${BASE_USER}" ]] || BASE_USER="${SUDO_USER}"
 
 
