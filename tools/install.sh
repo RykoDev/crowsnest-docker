@@ -89,11 +89,11 @@ main() {
         status_msg "Install logrotate configuration ..." "1"
     fi
 
-    if install_crowsnest_conf; then
-        status_msg "Install crowsnest.conf ..." "0"
-    else
-        status_msg "Install crowsnest.conf ..." "1"
-    fi
+    # if install_crowsnest_conf; then
+    #     status_msg "Install crowsnest.conf ..." "0"
+    # else
+    #     status_msg "Install crowsnest.conf ..." "1"
+    # fi
 
     # if enable_service; then
     #     status_msg "Enable crowsnest.service ..." "0"
