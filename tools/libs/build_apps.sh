@@ -22,7 +22,6 @@ clone_ustreamer() {
     if [[ -d bin/ustreamer ]]; then
         rm -rf bin/ustreamer
     fi
-    sudo -u "${BASE_USER}" \
     git clone "${CROWSNEST_USTREAMER_REPO_SHIP}" \
     -b "${CROWSNEST_USTREAMER_REPO_BRANCH}" \
     --depth=1 --single-branch bin/ustreamer
@@ -33,7 +32,6 @@ clone_cstreamer() {
     if [[ -d bin/camera-streamer ]]; then
         rm -rf bin/camera-streamer
     fi
-    sudo -u "${BASE_USER}" \
     git clone "${CROWSNEST_CAMERA_STREAMER_REPO_SHIP}" --recursive \
     -b "${CROWSNEST_CAMERA_STREAMER_REPO_BRANCH}" \
     --depth=1 --single-branch bin/camera-streamer
