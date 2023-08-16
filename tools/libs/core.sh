@@ -43,11 +43,11 @@ is_raspbian() {
 }
 
 link_pkglist_rpi() {
-    sudo -u "${BASE_USER}" ln -sf "${SRC_DIR}/libs/pkglist-rpi.sh" "${SRC_DIR}/pkglist.sh" &> /dev/null || return 1
+    ln -sf "${SRC_DIR}/libs/pkglist-rpi.sh" "${SRC_DIR}/pkglist.sh" &> /dev/null || return 1
 }
 
 link_pkglist_generic() {
-    sudo -u "${BASE_USER}" ln -sf "${SRC_DIR}/libs/pkglist-generic.sh" "${SRC_DIR}/pkglist.sh" &> /dev/null || return 1
+    ln -sf "${SRC_DIR}/libs/pkglist-generic.sh" "${SRC_DIR}/pkglist.sh" &> /dev/null || return 1
 }
 
 run_apt_update() {
@@ -72,7 +72,7 @@ install_dependencies() {
 create_filestructure() {
     for dir in "${CROWSNEST_CONFIG_PATH}" "${CROWSNEST_LOG_PATH%/*.*}" "${CROWSNEST_ENV_PATH}"; do
         if [[ ! -d "${dir}" ]]; then
-            if sudo -u "${BASE_USER}" mkdir -p "${dir}"; then
+            if mkdir -p "${dir}"; then
                 status_msg "Created ${dir} ..." "0"
             else
                 status_msg "Created ${dir} ..." "1"
@@ -119,7 +119,7 @@ install_env_file() {
     local env_file env_target
     env_file="${PWD}/resources/crowsnest.env"
     env_target="${CROWSNEST_ENV_PATH}/crowsnest.env"
-    sudo -u "${BASE_USER}" cp -f "${env_file}" "${env_target}"
+   cp -f "${env_file}" "${env_target}"
     sed -i "s|%CONFPATH%|${CROWSNEST_CONFIG_PATH}|" "${env_target}"
     [[ -f "${env_target}" ]] &&
     grep -q "${BASE_USER}" "${env_target}" || return 1
@@ -141,7 +141,7 @@ backup_crowsnest_conf() {
     if [[ -f "${CROWSNEST_CONFIG_PATH}/crowsnest.conf" ]]; then
         msg "Found existing crowsnest.conf in ${CROWSNEST_CONFIG_PATH} ..."
         msg "\t ==> Creating backup as crowsnest.conf.${extension} ..."
-        sudo -u "${BASE_USER}" mv "${CROWSNEST_CONFIG_PATH}/crowsnest.conf" "${CROWSNEST_CONFIG_PATH}/crowsnest.conf.${extension}"
+        mv "${CROWSNEST_CONFIG_PATH}/crowsnest.conf" "${CROWSNEST_CONFIG_PATH}/crowsnest.conf.${extension}"
     fi
 }
 
@@ -150,14 +150,14 @@ install_crowsnest_conf() {
     conf_template="${PWD}/resources/crowsnest.conf"
     logpath="${CROWSNEST_LOG_PATH}/crowsnest.log"
     backup_crowsnest_conf
-    sudo -u "${BASE_USER}" cp -rf "${conf_template}" "${CROWSNEST_CONFIG_PATH}"
+    cp -rf "${conf_template}" "${CROWSNEST_CONFIG_PATH}"
     sed -i "s|%LOGPATH%|${logpath}|g" "${CROWSNEST_CONFIG_PATH}/crowsnest.conf"
     [[ -f "${CROWSNEST_CONFIG_PATH}/crowsnest.conf" ]] &&
     grep -q "${logpath}" "${CROWSNEST_CONFIG_PATH}/crowsnest.conf" || return 1
 }
 
 enable_service() {
-    sudo systemctl enable crowsnest.service &> /dev/null || return 1
+    systemctl enable crowsnest.service &> /dev/null || return 1
 }
 
 add_group_video() {

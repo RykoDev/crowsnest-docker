@@ -15,7 +15,7 @@
 set -Ee
 
 # Debug
-# set -x
+set -x
 
 ### Crowsnest Dependencies
 PKGLIST="git crudini bsdutils findutils v4l-utils curl"
